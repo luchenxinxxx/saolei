@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原生js 扫雷</title>
+	<link rel="stylesheet" href="demo.css">
+	<script type="text/javascript" src="demo.js" async="async"></script>
+	<!-- 
+    结构1：wrapper 包含了背景图片 按钮图片 
+          在点击按钮之后 会出现文字盒子+游戏界面盒子
+    结构2: alertBox 弹框盒子
+          包含游戏失败和游戏通过所需要弹出的图片盒子 也就是alertImg
+    第三步骤： JS部分（一边补充缺失的css）
+        1.点击开始游戏出现 游戏界面
+        2.生成100个小格插入到游戏界面（box）中以及随机生个10个雷 【补充css 小格的样式】 
+        3.用户开始游戏 鼠标点击【通过事件委托机制 找到用户点击时操作的小格（事件源事件） 对该小格进行一定的处理】
+           判断  左键 leftClick()；右键 rightClick()
+        4.funciton leftClick(dom) {}
+             点到雷 游戏失败 并且显示所有雷的位置
+             没有点到雷 【获取当前点击的小格的位置 通过id】
+                       出现数字 n=0【补充css  数字样式】  
+                       出现什么数字？--》 循环各个判断周围八个小格没有雷 n就还是0； 当n是0的时候需要进行扩散就是再各个把周围的八个小格取出来判断这些小格周围的小格有没有雷（递归）
+                                        若有雷 雷的个数就是n的值
+
+        5. function rightClick(dom){}
+           没有标记并且没有数字--》进行标记红旗；有标记--》取消标记；  【classList.toggle()没有该类名就添加有该类名就删除】
+           有数字--》无效果 【是否有num】
+           判断标记是否正确
+	 -->
+</head>
+<body>
+	<div class="wrapper">
+		<div class="startBtn" id="startBtn" ></div>
+		<div class="box" id="box"></div>
+		<div class="textBox" id="textBox">
+			当前剩余雷数：
+			<span id="score">10</span>
+		</div>
+	</div>
+	<div class="alertBox" id="alertBox">
+		<div class="alertImg" id="alertImg">
+			<div class="close" id="close"></div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+	</script>
+</body>
+</html>
